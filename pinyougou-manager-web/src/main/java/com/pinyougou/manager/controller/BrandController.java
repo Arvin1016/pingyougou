@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author : Arvin
@@ -98,6 +99,7 @@ public class BrandController {
 
     /**
      * 根据id 删除品牌
+     *
      * @param ids 品牌的数组
      * @return 结果集
      */
@@ -114,13 +116,19 @@ public class BrandController {
 
     /**
      * 条件查询和分页
+     *
      * @param brand 品牌对象
-     * @param page 当前页
-     * @param size 每页记录数
+     * @param page  当前页
+     * @param size  每页记录数
      * @return
      */
     @RequestMapping("/search.do")
-    public PageResult search(@RequestBody TbBrand brand,int page,int size){
-        return brandService.findPage(brand,page,size);
+    public PageResult search(@RequestBody TbBrand brand, int page, int size) {
+        return brandService.findPage(brand, page, size);
+    }
+
+    @RequestMapping("/selectOptionList.do")
+    public List<Map> selectOptionList() {
+        return brandService.selectOptionList();
     }
 }

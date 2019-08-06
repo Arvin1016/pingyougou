@@ -4,6 +4,7 @@ import com.pinyougou.pojo.TbBrand;
 import entity.PageResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author : Arvin
@@ -62,4 +63,7 @@ public interface BrandService {
      * @return 分页结果集
      */
     public PageResult findPage(TbBrand brand,int pageNum,int pageSize);
+
+
+    public List<Map> selectOptionList();
 }
