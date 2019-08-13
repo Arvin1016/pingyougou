@@ -1,5 +1,5 @@
 //控制层
-app.controller('goodsController', function ($scope, $controller, goodsService, uploadService, itemCatService, typeTemplateService) {
+app.controller('goodsController', function ($scope, $controller, $location, goodsService, uploadService, itemCatService, typeTemplateService) {
 
     $controller('baseController', {$scope: $scope});//继承
 
@@ -23,13 +23,30 @@ app.controller('goodsController', function ($scope, $controller, goodsService, u
     };
 
     //查询实体
-    $scope.findOne = function (id) {
+    $scope.findOne = function () {
+        var id = $location.search()['id'];//获取参数值
+        if (id == null) {
+            return;
+        }
         goodsService.findOne(id).success(
             function (response) {
                 $scope.entity = response;
+                //富文本框
+                editor.html($scope.entity.goodsDesc.introduction);
+                //图片
+                $scope.entity.goodsDesc.itemImages = JSON.parse($scope.entity.goodsDesc.itemImages);
+                //扩展属性
+                $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.entity.goodsDesc.customAttributeItems);
+                //规格
+                $scope.entity.goodsDesc.specificationItems = JSON.parse($scope.entity.goodsDesc.specificationItems);
+
+                //SKU数据
+                for (var i = 0; i < $scope.entity.itemList.length; i++) {
+                    $scope.entity.itemList[i].spec = JSON.parse($scope.entity.itemList[i].spec);
+                }
             }
         );
-    }
+    };
 
     //增加
     $scope.add = function () {
@@ -141,8 +158,10 @@ app.controller('goodsController', function ($scope, $controller, goodsService, u
             function (response) {
                 $scope.typeTemplate = response;//获取模板类型
                 $scope.typeTemplate.brandIds = JSON.parse($scope.typeTemplate.brandIds);
-
-                $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.typeTemplate.customAttributeItems);
+                //因为增加的时候和修改的时候有冲突,所以需要进行判断是否有id
+                if ($location.search()['id'] == null) {
+                    $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.typeTemplate.customAttributeItems);
+                }
             }
         );
 
@@ -181,7 +200,7 @@ app.controller('goodsController', function ($scope, $controller, goodsService, u
         //初始化
         $scope.entity.itemList = [{spec: {}, price: 0, num: 99999, status: '0', isDefault: '0'}];
         var items = $scope.entity.goodsDesc.specificationItems;
-        for (var i = 0; i <items.length ; i++) {
+        for (var i = 0; i < items.length; i++) {
 
             $scope.entity.itemList = addColumn($scope.entity.itemList, items[i].attributeName, items[i].attributeValue);
         }
@@ -199,5 +218,62 @@ app.controller('goodsController', function ($scope, $controller, goodsService, u
             }
         }
         return newList;
+    };
+
+    //状态
+    $scope.status = ['未审核', '已通过', '审核未通过', '已关闭'];
+
+    //分类级别
+    $scope.itemCatList = [];
+
+    $scope.findItemCatList = function () {
+        itemCatService.findAll().success(
+            function (response) {
+                //response相当于总条数
+                for (var i = 0; i < response.length; i++) {
+                    //将id做为下标,把name赋值给每一个元素
+                    $scope.itemCatList[response[i].id] = response[i].name;
+                }
+            }
+        )
+    };
+
+    //判断规格复选框是否被选中
+    $scope.checkAttributeValue = function (specName, optionName) {
+        var items = $scope.entity.goodsDesc.specificationItems;
+        var object = $scope.searchObjectByKey(items, 'attributeName', specName);
+
+        if (object != null) {
+            if (object.attributeValue.indexOf(optionName) >= 0) { //如果能够查到规格选项
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    };
+
+    $scope.save = function () {
+        $scope.entity.goodsDesc.introduction = editor.html();
+        var serviceObject;
+
+        if ($scope.entity.goods.id != null) {
+            serviceObject = goodsService.update($scope.entity);
+        } else {
+            serviceObject = goodsService.add($scope.entity);
+        }
+
+        serviceObject.success(
+            function (response) {
+                if (response.success){
+                    alert("保存成功");
+                    $scope.entity = {};
+                    editor.html("") ;
+                }else {
+                    alert(response.success)
+                }
+            }
+        )
     }
 });
