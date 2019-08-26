@@ -3,17 +3,35 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pinyougou</groupId>
     <artifactId>pinyougou-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <modules>
         <module>pinyougou-pojo</module>
         <module>pinyougou-dao</module>
         <module>pinyougou-common</module>
         <module>pinyougou-sellergoods-interface</module>
+        <module>pinyougou-content-interface</module>
+        <module>pinyougou-solr-util</module>
+        <module>pinyougou-search-interface</module>
+        <module>pinyougou-page-interface</module>
+        <module>pinyougou-user-interface</module>
+        <module>pinyougou-cart-interface</module>
+        <module>pinyougou-cart-service</module>
+        <module>pinyougou-cart-web</module>
+
+        <!--
         <module>pinyougou-sellergoods-service</module>
         <module>pinyougou-manager-web</module>
         <module>pinyougou-shop-web</module>
-        <module>pinyougou-content-interface</module>
+        <module>pinyougou-search-service</module>
+        <module>pinyougou-search-web</module>
         <module>pinyougou-content-service</module>
+        <module>pinyougou-portal-web</module>
+        <module>pinyougou-page-service</module>
+        <module>pinyougou-page-web</module>
+        <module>pinyougou-page-web</module>
+        <module>pinyougou-user-service</module>
+        <module>pinyougou-user-web</module>
+         -->
     </modules>
     <packaging>pom</packaging>
 
@@ -267,7 +285,6 @@
 
 
     <build>
-
         <plugins>
             <!-- java编译插件 -->
             <plugin>
@@ -280,9 +297,6 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-
         </plugins>
-
     </build>
-
 </project>

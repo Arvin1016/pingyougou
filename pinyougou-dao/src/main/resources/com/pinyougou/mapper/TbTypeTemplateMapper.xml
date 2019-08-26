@@ -84,11 +84,13 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from tb_type_template
     where id = #{id,jdbcType=BIGINT}
   </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_type_template
     where id = #{id,jdbcType=BIGINT}
@@ -174,10 +176,10 @@
   <update id="updateByExample" parameterType="map" >
     update tb_type_template
     set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      spec_ids = #{record.specIds,jdbcType=VARCHAR},
-      brand_ids = #{record.brandIds,jdbcType=VARCHAR},
-      custom_attribute_items = #{record.customAttributeItems,jdbcType=VARCHAR}
+    name = #{record.name,jdbcType=VARCHAR},
+    spec_ids = #{record.specIds,jdbcType=VARCHAR},
+    brand_ids = #{record.brandIds,jdbcType=VARCHAR},
+    custom_attribute_items = #{record.customAttributeItems,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -208,8 +210,4 @@
       custom_attribute_items = #{customAttributeItems,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-
-  <select id="findTypeList" resultType="java.util.Map">
-        select id,name as text from tb_type_template
-  </select>
 </mapper>

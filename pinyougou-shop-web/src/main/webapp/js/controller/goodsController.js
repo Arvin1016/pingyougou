@@ -268,8 +268,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             function (response) {
                 if (response.success){
                     alert("保存成功");
-                    $scope.entity = {};
-                    editor.html("") ;
+                    location.href="goods.html";
                 }else {
                     alert(response.success)
                 }

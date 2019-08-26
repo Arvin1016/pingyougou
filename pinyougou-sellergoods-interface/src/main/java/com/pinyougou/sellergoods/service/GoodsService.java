@@ -66,5 +66,6 @@ public interface GoodsService {
 	 * @param status
 	 */
 	public void updateStatus(Long[] ids, String status);
-	
+
+	public List findByItemListAndStatus(Long [] goodsIds,String status);
 }

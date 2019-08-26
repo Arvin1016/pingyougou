@@ -113,9 +113,4 @@ public class TypeTemplateController {
 		return typeTemplateService.findPage(typeTemplate, page, rows);		
 	}
 
-	@RequestMapping("/findTypeList.do")
-	public List<Map> findTypeList(){
-		return typeTemplateService.findTypeList();
-	}
-	
 }
