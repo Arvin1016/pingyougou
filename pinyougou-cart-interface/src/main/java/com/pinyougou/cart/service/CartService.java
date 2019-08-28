@@ -2,6 +2,7 @@ package com.pinyougou.cart.service;
 
 import com.pinyougou.pojogroup.Cart;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -21,4 +22,26 @@ public interface CartService {
      * @return
      */
     public List<Cart> addGoodsToCartList(List<Cart> cartList,Long itemId,Integer num);
+
+    /**
+     * 从redis中查询购物车
+     * @param username 用户名
+     * @return
+     */
+    public List<Cart> findListCartFromRedis(String username);
+
+    /**
+     * 将购物车存入redis
+     * @param username 用户名
+     * @param cartList 购物车集合
+     */
+    public void  saveCartListToRedis(String username,List<Cart> cartList);
+
+    /**
+     * 合并购物车
+     * @param cartList1
+     * @param cartList2
+     * @return
+     */
+    public List<Cart> mergeCartList(List<Cart> cartList1,List<Cart> cartList2);
 }
