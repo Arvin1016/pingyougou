@@ -11,7 +11,7 @@ import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.Session;
 
-import com.pinyougou.service.UserService;
+import com.pinyougou.user.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

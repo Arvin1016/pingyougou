@@ -1,80 +1,83 @@
-app.controller('brandController', function ($scope, $http,$controller, brandService) {
+// 定义控制器:
+app.controller("brandController",function($scope,$controller,$http,brandService){
+	// AngularJS中的继承:伪继承
+	$controller('baseController',{$scope:$scope});
+	
+	// 查询所有的品牌列表的方法:
+	$scope.findAll = function(){
+		// 向后台发送请求:
+		brandService.findAll().success(function(response){
+			$scope.list = response;
+		});
+	}
 
-    $controller('baseController', {$scope: $scope});
-
-    $scope.findAll = function () {
-        brandService.findAll().success(
-            function (response) {
-                $scope.list = response;
-            }
-        );
-    };
-
-
-    //查询实体
-    $scope.findOne = function (id) {
-        brandService.findOne(id).success(
-            function (response) {
-                $scope.entity = response;
-            }
-        )
-    };
-
-    //增加和修改
-    $scope.save = function () {
-        //定义默认变量为添加
-        var object = null;
-        //如果有id就变更为修改
-        if ($scope.entity.id != null) {
-            object = brandService.update($scope.entity);
-        } else {
-            object = brandService.add($scope.entity);
-        }
-        //调用方法
-        object.success(
-            function (response) {
-                //如果成功刷新页面
-                if (response.success) {
-                    $scope.reloadList();
-                    //失败则给出提示
-                } else {
-                    alert(response.message);
-                }
-            }
-        )
-    };
-
-
-    //删除选中
-    $scope.delete = function () {
-        if (confirm('你确定要删除吗?')) {
-            //调用删除方法
-            brandService.delete($scope.selectIds).success(
-                function (response) {
-                    //如果成功,刷新列表
-                    if (response.success) {
-                        $scope.reloadList();//刷新列表
-                    } else {
-                        $scope.message;
-                    }
-                }
-            )
-        }
-    };
-
-    //条件查询
-    //定义一个搜索对象
-    $scope.searchEntity = {};
-    //定义一个查询函数
-    $scope.search = function (page, size) {
-        //调用条件查询方法
-        brandService.search(page, size, $scope.searchEntity).success(
-            function (response) {
-                $scope.paginationConf.totalItems = response.total;
-                $scope.list = response.rows;
-            }
-        );
-    }
-
-
+	// 分页查询
+	$scope.findByPage = function(page,rows){
+		// 向后台发送请求获取数据:
+		brandService.findByPage(page,rows).success(function(response){
+			$scope.paginationConf.totalItems = response.total;
+			$scope.list = response.rows;
+		});
+	}
+	
+	// 保存品牌的方法:
+	$scope.save = function(){
+		// 区分是保存还是修改
+		var object;
+		if($scope.entity.id != null){
+			// 更新
+			object = brandService.update($scope.entity);
+		}else{
+			// 保存
+			object = brandService.save($scope.entity);
+		}
+		object.success(function(response){
+			// {flag:true,message:xxx}
+			// 判断保存是否成功:
+			if(response.flag==true){
+				// 保存成功
+				alert(response.message);
+				$scope.reloadList();
+			}else{
+				// 保存失败
+				alert(response.message);
+			}
+		});
+	}
+	
+	// 查询一个:
+	$scope.findById = function(id){
+		brandService.findById(id).success(function(response){
+			// {id:xx,name:yy,firstChar:zz}
+			$scope.entity = response;
+		});
+	}
+	
+	// 删除品牌:
+	$scope.dele = function(){
+		brandService.dele($scope.selectIds).success(function(response){
+			// 判断保存是否成功:
+			if(response.flag==true){
+				// 保存成功
+				// alert(response.message);
+				$scope.reloadList();
+				$scope.selectIds = [];
+			}else{
+				// 保存失败
+				alert(response.message);
+			}
+		});
+	}
+	
+	$scope.searchEntity={};
+	
+	// 假设定义一个查询的实体：searchEntity
+	$scope.search = function(page,rows){
+		// 向后台发送请求获取数据:
+		brandService.search(page,rows,$scope.searchEntity).success(function(response){
+			$scope.paginationConf.totalItems = response.total;
+			$scope.list = response.rows;
+		});
+	}
+	
 });

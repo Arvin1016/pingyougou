@@ -1,7 +1,6 @@
 package com.pinyougou.manager.controller;
 import java.util.List;
 
-import com.pinyougou.pojo.TbItem;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -102,7 +101,7 @@ public class ItemCatController {
 	
 		/**
 	 * 查询+分页
-	 * @param itemCat
+	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
@@ -111,11 +110,9 @@ public class ItemCatController {
 	public PageResult search(@RequestBody TbItemCat itemCat, int page, int rows  ){
 		return itemCatService.findPage(itemCat, page, rows);		
 	}
-
-	@RequestMapping("/findByParentId.do")
+	
+	@RequestMapping("/findByParentId")
 	public List<TbItemCat> findByParentId(Long parentId){
-
 		return itemCatService.findByParentId(parentId);
 	}
-	
 }

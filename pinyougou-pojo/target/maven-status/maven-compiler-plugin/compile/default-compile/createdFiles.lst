@@ -7,9 +7,11 @@ com\pinyougou\pojo\TbTypeTemplate.class
 com\pinyougou\pojo\TbBrand.class
 com\pinyougou\pojo\TbGoodsExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbOrderItemExample$Criteria.class
+com\pinyougou\pojo\TbSeckillGoods.class
 com\pinyougou\pojo\TbAreasExample$Criteria.class
 com\pinyougou\pojo\TbFreightTemplateExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbFreightTemplateExample.class
+com\pinyougou\pojo\TbSeckillGoodsExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbPayLogExample.class
 com\pinyougou\pojo\TbUserExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbGoodsDesc.class
@@ -18,6 +20,7 @@ com\pinyougou\pojo\TbSpecification.class
 com\pinyougou\pojo\TbCitiesExample$Criterion.class
 com\pinyougou\pojo\TbItemCat.class
 com\pinyougou\pojo\TbAddressExample$Criterion.class
+com\pinyougou\pojo\TbSeckillGoodsExample.class
 com\pinyougou\pojo\TbSellerExample$Criterion.class
 com\pinyougou\pojo\TbSpecificationOption.class
 com\pinyougou\pojo\TbItemCatExample$Criterion.class
@@ -27,6 +30,7 @@ com\pinyougou\pojo\TbBrandExample$Criterion.class
 com\pinyougou\pojo\TbUserExample$Criteria.class
 com\pinyougou\pojo\TbGoodsDescExample$Criterion.class
 com\pinyougou\pojo\TbCitiesExample$Criteria.class
+com\pinyougou\pojo\TbSeckillOrder.class
 com\pinyougou\pojo\TbBrandExample.class
 com\pinyougou\pojo\TbGoodsDescExample$Criteria.class
 com\pinyougou\pojo\TbUser.class
@@ -47,8 +51,10 @@ com\pinyougou\pojo\TbTypeTemplateExample.class
 com\pinyougou\pojo\TbSeller.class
 com\pinyougou\pojo\TbCitiesExample.class
 com\pinyougou\pojo\TbContentCategory.class
+com\pinyougou\pojo\TbSeckillOrderExample.class
 com\pinyougou\pojo\TbOrder.class
 com\pinyougou\pojo\TbTypeTemplateExample$Criterion.class
+com\pinyougou\pojo\TbSeckillOrderExample$Criterion.class
 com\pinyougou\pojo\TbAddressExample.class
 com\pinyougou\pojo\TbAreasExample.class
 com\pinyougou\pojo\TbItemExample$GeneratedCriteria.class
@@ -69,6 +75,7 @@ com\pinyougou\pojo\TbSpecificationExample$Criterion.class
 com\pinyougou\pojo\TbFreightTemplateExample$Criteria.class
 com\pinyougou\pojo\TbContent.class
 com\pinyougou\pojo\TbProvincesExample.class
+com\pinyougou\pojo\TbSeckillGoodsExample$Criteria.class
 com\pinyougou\pojo\TbAddress.class
 com\pinyougou\pojo\TbGoods.class
 com\pinyougou\pojo\TbOrderExample$GeneratedCriteria.class
@@ -83,6 +90,7 @@ com\pinyougou\pojo\TbOrderItemExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbCitiesExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbPayLog.class
 com\pinyougou\pojo\TbPayLogExample$Criteria.class
+com\pinyougou\pojo\TbSeckillGoodsExample$Criterion.class
 com\pinyougou\pojo\TbFreightTemplate.class
 com\pinyougou\pojo\TbProvincesExample$Criterion.class
 com\pinyougou\pojo\TbContentExample$GeneratedCriteria.class
@@ -95,10 +103,12 @@ com\pinyougou\pojo\TbSellerExample.class
 com\pinyougou\pojo\TbFreightTemplateExample$Criterion.class
 com\pinyougou\pojo\TbSpecificationExample$Criteria.class
 com\pinyougou\pojo\TbContentCategoryExample$Criteria.class
+com\pinyougou\pojo\TbSeckillOrderExample$Criteria.class
 com\pinyougou\pojo\TbOrderItemExample$Criterion.class
 com\pinyougou\pojo\TbProvincesExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbOrderItemExample.class
 com\pinyougou\pojo\TbItem.class
+com\pinyougou\pojo\TbSeckillOrderExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbAreasExample$GeneratedCriteria.class
 com\pinyougou\pojo\TbOrderItem.class
 com\pinyougou\pojo\TbContentExample$Criteria.class

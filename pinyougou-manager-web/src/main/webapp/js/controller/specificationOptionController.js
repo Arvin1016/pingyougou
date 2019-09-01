@@ -41,7 +41,7 @@ app.controller('specificationOptionController' ,function($scope,$controller   ,s
 		}				
 		serviceObject.success(
 			function(response){
-				if(response.success){
+				if(response.flag){
 					//重新查询 
 		        	$scope.reloadList();//重新加载
 				}else{
@@ -49,7 +49,7 @@ app.controller('specificationOptionController' ,function($scope,$controller   ,s
 				}
 			}		
 		);				
-	};
+	}
 	
 	 
 	//批量删除 
@@ -57,13 +57,13 @@ app.controller('specificationOptionController' ,function($scope,$controller   ,s
 		//获取选中的复选框			
 		specificationOptionService.dele( $scope.selectIds ).success(
 			function(response){
-				if(response.success){
+				if(response.flag){
 					$scope.reloadList();//刷新列表
-					$scope.selectIds=[];
+					$scope.selectIds = [];
 				}						
 			}		
 		);				
-	};
+	}
 	
 	$scope.searchEntity={};//定义搜索对象 
 	
@@ -75,7 +75,6 @@ app.controller('specificationOptionController' ,function($scope,$controller   ,s
 				$scope.paginationConf.totalItems=response.total;//更新总记录数
 			}			
 		);
-	};
-
-
+	}
+    
 });	

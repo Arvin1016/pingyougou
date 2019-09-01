@@ -46,7 +46,7 @@
     </authentication-manager>
 
     <!-- 声明权限控制实现类 -->
-    <beans:bean id="userDetailService" class="com.pinyougou.service.com.pinyougou.user.service.UserDetailServiceImpl">
+    <beans:bean id="userDetailService" class="com.pinyougou.service.UserDetailServiceImpl">
         <beans:property name="sellerService" ref="sellerService"/>
     </beans:bean>
 

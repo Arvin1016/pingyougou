@@ -1,4 +1,4 @@
-package com.pinyougou.service;
+package com.pinyougou.user.service;
 import java.util.List;
 import com.pinyougou.pojo.TbUser;
 

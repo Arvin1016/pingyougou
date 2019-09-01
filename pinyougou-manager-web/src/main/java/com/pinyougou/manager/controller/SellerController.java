@@ -101,7 +101,7 @@ public class SellerController {
 	
 		/**
 	 * 查询+分页
-	 * @param seller
+	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
@@ -110,21 +110,15 @@ public class SellerController {
 	public PageResult search(@RequestBody TbSeller seller, int page, int rows  ){
 		return sellerService.findPage(seller, page, rows);		
 	}
-
-	/**
-	 * 修改状态
-	 * @param sellerId
-	 * @param status
-	 * @return
-	 */
-	@RequestMapping("/updateStatus.do")
-	public Result updateStatus(String sellerId, String status){
+	
+	@RequestMapping("/updateStatus")
+	public Result updateStatus(String sellerId,String status){
 		try {
-			sellerService.updateStatus(sellerId,status);
-			return new Result(true,"成功");
+			sellerService.updateStatus(sellerId, status);
+			return new Result(true, "审核状态成功"); 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false,"失败");
+			return new Result(false, "审核状态失败");
 		}
 	}
 	
